@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import {
-  createApp, ref, computed, nextTick,
+  createApp, ref, computed,
 } from 'vue';
 import { editorService } from '@tmagic/editor';
 import type { MPage } from '@tmagic/schema';
