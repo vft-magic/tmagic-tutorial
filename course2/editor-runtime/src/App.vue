@@ -7,10 +7,13 @@ import {
   nextTick, reactive, ref, watch,
 } from 'vue';
 
+import type { RemoveData, UpdateData } from '@tmagic/stage';
+import type { Id, MApp, MNode } from '@tmagic/schema';
+
 import uiPage from './ui-page.vue';
 
 const pageComp = ref<InstanceType<typeof uiPage>>();
-const root = ref<any>();
+const root = ref<MApp>();
 const page = ref();
 
 window.addEventListener('message', ({ data }) => {
@@ -18,32 +21,32 @@ window.addEventListener('message', ({ data }) => {
     return;
   }
 
-  (window as any).magic?.onRuntimeReady({
+  window.magic?.onRuntimeReady({
     /** 当编辑器的dsl对象变化时会调用 */
-    updateRootConfig(config: any) {
+    updateRootConfig(config: MApp) {
       root.value = config;
     },
 
     /** 当编辑器的切换页面时会调用 */
-    updatePageId(id: string) {
-      page.value = root.value?.items?.find((item: any) => item.id === id);
+    updatePageId(id: Id) {
+      page.value = root.value?.items?.find((item) => item.id === id);
     },
 
     /** 新增组件时调用 */
-    add({ config }: any) {
+    add({ config }: UpdateData) {
       const parent = config.type === 'page' ? root.value : page.value;
       parent.items?.push(config);
     },
 
     /** 更新组件时调用 */
-    update({ config }: any) {
-      const index = page.value.items?.findIndex((child: any) => child.id === config.id);
+    update({ config }: UpdateData) {
+      const index = page.value.items?.findIndex((child: MNode) => child.id === config.id);
       page.value.items.splice(index, 1, reactive(config));
     },
 
     /** 删除组件时调用 */
-    remove({ id }: any) {
-      const index = page.value.items?.findIndex((child: any) => child.id === id);
+    remove({ id }: RemoveData) {
+      const index = page.value.items?.findIndex((child: MNode) => child.id === id);
       page.value.items.splice(index, 1);
     },
   });
@@ -52,7 +55,7 @@ window.addEventListener('message', ({ data }) => {
 watch(page, async () => {
   // page配置变化后，需要等dom更新
   await nextTick();
-  (window as any).magic.onPageElUpdate(pageComp.value?.$el);
+  window.magic?.onPageElUpdate(pageComp.value?.$el);
 });
 </script>
 

@@ -9,8 +9,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@tmagic/editor": "^1.0.0-rc.12",
-    "@tmagic/form": "^1.0.0-rc.12",
+    "@tmagic/editor": "^1.0.3",
+    "@tmagic/form": "^1.0.3",
+    "@tmagic/stage": "^1.0.3",
     "core-js": "^3.8.3",
     "element-plus": "^2.2.5",
     "vue": "^3.2.13"

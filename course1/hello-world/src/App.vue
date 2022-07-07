@@ -12,6 +12,7 @@ import {
 } from 'vue';
 import { editorService } from '@tmagic/editor';
 import type { MPage } from '@tmagic/schema';
+import type StageCore from '@tmagic/stage';
 
 const page = computed(() => editorService.get<MPage>('page'));
 
@@ -33,7 +34,7 @@ const componentGroupList = ref([
   },
 ]);
 
-const render = async ({ renderer }: any) => {
+const render = async ({ renderer }: StageCore) => {
   const root = window.document.createElement('div');
 
   if (!page.value) return root;
@@ -73,10 +74,10 @@ const render = async ({ renderer }: any) => {
       }
     `;
 
-    renderer.iframe.contentDocument.head.appendChild(style);
+    renderer.iframe?.contentDocument?.head.appendChild(style);
 
-    renderer.iframe.contentWindow.magic?.onPageElUpdate(root);
-    renderer.iframe.contentWindow.magic?.onRuntimeReady({});
+    renderer.contentWindow?.magic?.onPageElUpdate(root);
+    renderer.contentWindow?.magic?.onRuntimeReady({});
   });
 
   return root;
