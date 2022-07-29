@@ -16,40 +16,34 @@ const pageComp = ref<InstanceType<typeof uiPage>>();
 const root = ref<MApp>();
 const page = ref();
 
-window.addEventListener('message', ({ data }) => {
-  if (!data.tmagicRuntimeReady) {
-    return;
-  }
+window.magic?.onRuntimeReady({
+  /** 当编辑器的dsl对象变化时会调用 */
+  updateRootConfig(config: MApp) {
+    root.value = config;
+  },
 
-  window.magic?.onRuntimeReady({
-    /** 当编辑器的dsl对象变化时会调用 */
-    updateRootConfig(config: MApp) {
-      root.value = config;
-    },
+  /** 当编辑器的切换页面时会调用 */
+  updatePageId(id: Id) {
+    page.value = root.value?.items?.find((item) => item.id === id);
+  },
 
-    /** 当编辑器的切换页面时会调用 */
-    updatePageId(id: Id) {
-      page.value = root.value?.items?.find((item) => item.id === id);
-    },
+  /** 新增组件时调用 */
+  add({ config }: UpdateData) {
+    const parent = config.type === 'page' ? root.value : page.value;
+    parent.items?.push(config);
+  },
 
-    /** 新增组件时调用 */
-    add({ config }: UpdateData) {
-      const parent = config.type === 'page' ? root.value : page.value;
-      parent.items?.push(config);
-    },
+  /** 更新组件时调用 */
+  update({ config }: UpdateData) {
+    const index = page.value.items?.findIndex((child: MNode) => child.id === config.id);
+    page.value.items.splice(index, 1, reactive(config));
+  },
 
-    /** 更新组件时调用 */
-    update({ config }: UpdateData) {
-      const index = page.value.items?.findIndex((child: MNode) => child.id === config.id);
-      page.value.items.splice(index, 1, reactive(config));
-    },
-
-    /** 删除组件时调用 */
-    remove({ id }: RemoveData) {
-      const index = page.value.items?.findIndex((child: MNode) => child.id === id);
-      page.value.items.splice(index, 1);
-    },
-  });
+  /** 删除组件时调用 */
+  remove({ id }: RemoveData) {
+    const index = page.value.items?.findIndex((child: MNode) => child.id === id);
+    page.value.items.splice(index, 1);
+  },
 });
 
 watch(page, async () => {
