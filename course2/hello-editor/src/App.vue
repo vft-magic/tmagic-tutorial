@@ -13,6 +13,7 @@ import {
 
 const value = ref({
   type: 'app',
+  id: 1,
   items: [],
 });
 

@@ -11,13 +11,13 @@ import {
   createApp, ref, computed,
 } from 'vue';
 import { editorService } from '@tmagic/editor';
-import type { MPage } from '@tmagic/schema';
 import type StageCore from '@tmagic/stage';
 
-const page = computed(() => editorService.get<MPage>('page'));
+const page = computed(() => editorService.get('page'));
 
 const value = ref({
   type: 'app',
+  id: 1,
   items: [],
 });
 
@@ -67,7 +67,7 @@ const render = async ({ renderer }: StageCore) => {
       html,body {
         height: 100%; margin: 0;padding: 0;
       }
-      
+
       html::-webkit-scrollbar {
         width: 0 !important;
         display: none;
