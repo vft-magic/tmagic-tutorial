@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tmagic/schema": "^1.2.9",
+    "@tmagic/schema": "^1.3.0",
     "vue": "^3.2.37"
   }
 }
