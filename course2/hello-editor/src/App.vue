@@ -3,7 +3,7 @@
     v-model="value"
     :runtime-url="runtimeUrl"
     :component-group-list="componentGroupList"
-  ></m-editor>
+  />
 </template>
 
 <script lang="ts" setup>

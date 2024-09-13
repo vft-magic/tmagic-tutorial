@@ -4,7 +4,7 @@
     :runtime-url="runtimeUrl"
     :component-group-list="componentGroupList"
     :props-values="propsValues"
-  ></m-editor>
+  />
 </template>
 
 <script lang="ts" setup>

@@ -1,5 +1,5 @@
 <template>
-  <Page v-if="page" :config="page" ref="pageComp"></Page>
+  <Page v-if="page" :config="page" ref="pageComp" />
 </template>
 
 <script lang="ts" setup>

@@ -3,7 +3,7 @@
     v-model="value"
     :render="render"
     :component-group-list="componentGroupList"
-  ></m-editor>
+  />
 </template>
 
 <script lang="ts" setup>

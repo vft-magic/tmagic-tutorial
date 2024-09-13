@@ -1,5 +1,5 @@
 <template>
-  <uiPage :config="page" ref="pageComp"></uiPage>
+  <uiPage :config="page" ref="pageComp" />
 </template>
 
 <script lang="ts" setup>
