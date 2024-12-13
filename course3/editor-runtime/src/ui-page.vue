@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { computed, defineProps } from 'vue';
-import type { MPage } from '@tmagic/schema';
+import type { MPage } from '@tmagic/core';
 
 const props = defineProps<{
   config: MPage;

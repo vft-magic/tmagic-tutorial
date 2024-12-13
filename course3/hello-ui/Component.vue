@@ -1,5 +1,5 @@
 <template>
-  <component v-if="config" :is="type" :id="`${id}`" :style="style" :config="config">
+  <component v-if="config" :is="type" :data-tmagic-id="`${id}`" :style="style" :config="config">
     <slot></slot>
   </component>
 </template>
@@ -7,7 +7,7 @@
 <script lang=ts setup>
 import { computed } from 'vue';
 
-import type { MNode } from '@tmagic/schema';
+import type { MNode } from '@tmagic/core';
 
 // 将节点作品参数传入组件中
 const props = defineProps<{

@@ -7,8 +7,8 @@ import {
   nextTick, reactive, ref, watch,
 } from 'vue';
 
+import type { Id, MApp, MNode } from '@tmagic/core';
 import type { RemoveData, UpdateData } from '@tmagic/stage';
-import type { Id, MApp, MNode } from '@tmagic/schema';
 
 import uiPage from './ui-page.vue';
 

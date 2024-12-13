@@ -9,17 +9,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@tmagic/design": "^1.4.0",
-    "@tmagic/editor": "^1.4.0",
-    "@tmagic/element-plus-adapter": "^1.4.0",
-    "@tmagic/form": "^1.4.0",
-    "@tmagic/stage": "^1.4.0",
+    "@tmagic/editor": "^1.5.0",
+    "@tmagic/element-plus-adapter": "^1.5.0",
     "core-js": "^3.8.3",
-    "element-plus": "^2.8.0",
-    "vue": "^3.5.4"
+    "element-plus": "^2.9.0",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-   "@babel/plugin-transform-class-static-block": "^7.24.7",
+    "@babel/plugin-transform-class-static-block": "^7.24.7",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",

@@ -49,7 +49,7 @@ const render = async ({ renderer }: StageCore) => {
 
   createApp(
     {
-      template: '<div v-for="node in config.items" :key="node.id" :id="node.id">hello world</div>',
+      template: '<div v-for="node in config.items" :key="node.id" :data-tmagic-id="node.id">hello world</div>',
       props: ['config'],
     },
     {
@@ -57,7 +57,7 @@ const render = async ({ renderer }: StageCore) => {
     },
   ).mount(root);
 
-  renderer.on('onload', () => {
+  renderer?.on('onload', () => {
     const style = window.document.createElement('style');
     style.innerHTML = `
       body {

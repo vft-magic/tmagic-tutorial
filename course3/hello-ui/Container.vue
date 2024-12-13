@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { MContainer } from '@tmagic/schema';
+import type { MContainer } from '@tmagic/core';
 
 import Component from './Component.vue';
 

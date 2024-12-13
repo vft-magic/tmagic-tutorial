@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { MNode } from '@tmagic/schema';
+import type { MNode } from '@tmagic/core';
 
 defineProps<{
   config: MNode;

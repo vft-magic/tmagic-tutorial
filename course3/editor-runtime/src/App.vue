@@ -8,8 +8,8 @@ import {
 } from 'vue';
 
 import type { RemoveData, UpdateData } from '@tmagic/stage';
-import type { Id, MApp, MNode } from '@tmagic/schema';
-import { getNodePath } from '@tmagic/utils';
+import type { Id, MApp, MNode } from '@tmagic/core';
+import { getNodePath } from '@tmagic/core';
 // eslint-disable-next-line
 import { Page } from 'hello-ui';
 

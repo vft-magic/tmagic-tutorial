@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { MPage } from '@tmagic/schema';
+import type { MPage } from '@tmagic/core';
 
 import Container from './Container.vue';
 

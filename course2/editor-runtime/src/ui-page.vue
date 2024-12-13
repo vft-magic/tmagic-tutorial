@@ -1,6 +1,6 @@
 <template>
-  <div v-if="config" :id="config.id" :style="style">
-    <div v-for="node in config.items" :key="node.id" :id="node.id">hello world</div>
+  <div v-if="config" :data-tmagic-id="config.id" :style="style">
+    <div v-for="node in config.items" :key="node.id" :data-tmagic-id="node.id">hello world</div>
   </div>
 </template>
 
